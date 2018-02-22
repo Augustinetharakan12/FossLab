@@ -1,17 +1,17 @@
-while [ true ]
-do
-top -n 1 > temp.txt
-kill_process=$(sed '8q;d' temp.txt)
-#echo $kill_process
-#echo ${kill_process[@]:1}
-echo $kill_process
-kill_id=$( echo $kill_process | awk '{print $2}')
-echo $kill_id
-kill_process=$( echo $kill_process | awk '{print $10}')
-echo $kill_process
-if [ $kill_process > 80 ]
+#!/bin/bash
+if [ $# -ne 1 ];
 then
-  kill -9 $kill_id
+	echo "Invalid number of arguments";
+	exit 0;
 fi
-sleep 2
-done
+while [ true ];
+do
+	USAGE=$(ps -eo pid -o pcpu -o command --no-headers | sort -nrk 2 | head -n 1 | cut -d "." -f1 |  awk '{print $2}' )
+	if [ $USAGE -gt $1 ]
+	then
+		MOSTUSAGE=$(ps -eo pid -o pcpu -o command --no-headers | sort -nrk 2 | head -n 1 | awk '{print $1}' )
+		kill -9 $MOSTUSAGE
+		echo "CPU Usage exceeded, killed most resource heavy process with PID : $MOSTUSAGE"
+	else 
+		exit 0
+fi
