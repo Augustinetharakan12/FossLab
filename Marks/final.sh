@@ -1,5 +1,4 @@
 clear
-echo ______________
 echo calculating...
 echo ``````````````
 pdftotext result_MDL.pdf temp.txt #to convert from pdf to txt
@@ -31,18 +30,19 @@ sed 's/(/ &/g' temp8.txt > temp9.txt
 
 sed 's/(O)/10/g' temp9.txt > temp10.txt
 sed 's/(A+)/9/g' temp10.txt > temp9.txt
-sed 's/(A)/8/g' temp9.txt > temp10.txt
-sed 's/(B+)/7/g' temp10.txt > temp9.txt
-sed 's/(B)/6/g' temp9.txt > temp10.txt
-sed 's/(C)/5/g' temp10.txt > temp9.txt
-sed 's/(P)/4/g' temp9.txt > temp10.txt
+sed 's/(A)/8.5/g' temp9.txt > temp10.txt
+sed 's/(B+)/8/g' temp10.txt > temp9.txt
+sed 's/(B)/7/g' temp9.txt > temp10.txt
+sed 's/(C)/6/g' temp10.txt > temp9.txt
+sed 's/(P)/5/g' temp9.txt > temp10.txt
 sed 's/(F)/0/g' temp10.txt > temp9.txt
 sed 's/(F)/0/g' temp9.txt > temp10.txt
 
+#to remove all the non ascii characters
 tr -cd '\11\12\15\40-\176' < temp10.txt > temp11.txt
 
 
-echo 'FINAL RESULTS' > result1.txt
+echo 'S1 FINAL RESULTS' > temps1.txt
 while read -r line
 do
     name="$line"
@@ -56,45 +56,28 @@ do
 	physics_lab=${arr[7]} #1
 	electrical_lab=${arr[8]} #1
 	computer_lab=${arr[9]} #1
-	name10=$(($maths*4 + $physics*4 + $graphics*4 + $computer*3 + $sustainable*3 + $electrical*3 + $physics_lab*1 + $electrical_lab*1 + $computer_lab*1))
-	mark=${name10}
-	#maths=$(bc <<< "scale=4; ($maths)*4")
-	#physics=$(bc <<< "scale=4; ($physics)*4")
-	#graphics=$(bc <<< "scale=4; ($graphics)*4")
-	#computer=$(bc <<< "scale=4; ($computer)*3")
-	#sustainable=$(bc <<< "scale=4; ($sustainable)*3")
-	#electrical=$(bc <<< "scale=4; ($electrical)*3")
-	#physics_lab=$(bc <<< "scale=4; ($physics_lab*1")
-	#electrical_lab=$(bc <<< "scale=4; ($electrical_lab)*4")
-	#computer_lab=$(bc <<< "scale=4; ($computer_lab)*4")
+	#name10=$(($maths*4 + $physics*4 + $graphics*3 + $computer*3 + $sustainable*3 + $electrical*3 + $physics_lab*1 + $electrical_lab*1 + $computer_lab*1))
+	maths=$(bc <<< "scale=2; ($maths)*4")	
+	physics=$(bc <<< "scale=2; ($physics)*4")
+	graphics=$(bc <<< "scale=2; ($graphics)*3")
+	computer=$(bc <<< "scale=2; ($computer)*3")
+	sustainable=$(bc <<< "scale=2; ($sustainable)*3")
+	electrical=$(bc <<< "scale=2; ($electrical)*3")
+	physics_lab=$(bc <<< "scale=2; ($physics_lab)*1")
+	electrical_lab=$(bc <<< "scale=2; ($electrical_lab)*1")
+	computer_lab=$(bc <<< "scale=2; ($computer_lab)*1")
 
-	#echo $($maths+$physics+$graphics+$computer+$sustainable+$electrical+$physics_lab+$electrical_lab+$computer_lab)
-	#bc <<< "scale=4; ($maths+$physics+$graphics+$computer+$sustainable+$electrical+$physics_lab+$electrical_lab+$computer_lab)"
-	var1=$(bc <<< "scale=4; ($name10)/23")
+	name10=$(bc <<< "scale=2; ($maths)+($physics)+($graphics)+($computer)+($sustainable)+($electrical)+($physics_lab)+($electrical_lab)+($computer_lab)")
+
+	mark=${name10}
+	var1=$(bc <<< "scale=2; ($name10)/23")
 	#name10=$(($name10/24))
 	#echo "Name read from file - $name10"
-	echo ${arr[0]}   ${var1}  ${mark}>> result1.txt
+	echo ${arr[0]}   ${var1}  ${mark}>> temps1.txt
 done < "temp11.txt"
 
-#rm temp*
-
+#second sem
 clear
-
-echo 
-
-echo "open the result.txt from the current directory to view the result"
-
-echo 
-
-cat result.txt
-#cat temp10.txt
-
-
-
-
-
-clear
-echo ______________
 echo calculating...
 echo ``````````````
 pdftotext result_MDL2.pdf temp.txt #to convert from pdf to txt
@@ -119,68 +102,59 @@ sed 's/CS120(/(/g' temp6.txt >temp7.txt
 #to remove all the spaces
 tr -d " \r" < temp7.txt > temp8.txt
 
-
 #to remove all the commas
 tr -d ",\r" < temp8.txt > temp9.txt
 
 #to enter a space before the mark
 sed 's/(/ &/g' temp9.txt > temp10.txt
 
-
 sed 's/(O)/10/g' temp10.txt > temp11.txt
 sed 's/(A+)/9/g' temp11.txt > temp10.txt
-sed 's/(A)/8/g' temp10.txt > temp11.txt
-sed 's/(B+)/7/g' temp11.txt > temp10.txt
-sed 's/(B)/6/g' temp10.txt > temp11.txt
-sed 's/(C)/5/g' temp11.txt > temp10.txt
-sed 's/(P)/4/g' temp10.txt > temp11.txt
+sed 's/(A)/8.5/g' temp10.txt > temp11.txt
+sed 's/(B+)/8/g' temp11.txt > temp10.txt
+sed 's/(B)/7/g' temp10.txt > temp11.txt
+sed 's/(C)/6/g' temp11.txt > temp10.txt
+sed 's/(P)/5/g' temp10.txt > temp11.txt
 sed 's/(F)/0/g' temp11.txt > temp10.txt
 sed 's/(F)/0/g' temp10.txt > temp11.txt
 
-
+#to delete all the non ascii characters
 tr -cd '\11\12\15\40-\176' < temp11.txt > temp12.txt
 
 
-echo 'FINAL RESULTS' > result2.txt
+echo 'S2 FINAL RESULTS' > temps2.txt
 while read -r line
 do
     name="$line"
 	arr=($name)
 	differential=${arr[1]} #4
 	chemistry=${arr[2]} #4
-	mechanics=${arr[3]} #4
+	mechanics=${arr[3]} #3
 	design=${arr[4]} #3
 	chemistry_lab=${arr[5]} #1
 	electronics2=${arr[6]} #3
 	electronics_lab=${arr[7]} #1
 	computer_lab2=${arr[8]} #1
 	computer2=${arr[9]} #3
-	name20=$(($differential*4 + $chemistry*4 + $mechanics*3 + $design*3 + $chemistry_lab*3 + $electronics2*1 + $electronics_lab*1 + $computer_lab2*1 + $computer2*4 ))
+	#name20=$(($differential*4 + $chemistry*4 + $mechanics*3 + $design*1 + $chemistry_lab*1 + $electronics2*4 + $electronics_lab*3 + $computer_lab2*3 + $computer2*1 ))	
+	differential=$(bc <<< "scale=2; ($differential)*4")
+	mechanics=$(bc <<< "scale=2; ($mechanics)*3")
+	chemistry=$(bc <<< "scale=2; ($chemistry)*4")
+	design=$(bc <<< "scale=2; ($design)*1")
+	chemistry_lab=$(bc <<< "scale=2; ($chemistry_lab)*1")
+	electronics2=$(bc <<< "scale=2; ($electronics2)*4")
+	electronics_lab=$(bc <<< "scale=2; ($electronics_lab)*3")
+	computer_lab2=$(bc <<< "scale=2; ($computer_lab2)*3")
+	computer2=$(bc <<< "scale=2; ($computer2)*1")
+	name20=$(bc <<< "scale=2; ($differential)+($mechanics)+($chemistry)+($design)+($chemistry_lab)+($electronics2)+($electronics_lab)+($computer_lab2)+($computer2)")
 	mark=${name20}
-	#maths=$(bc <<< "scale=4; ($maths)*4")
-	#physics=$(bc <<< "scale=4; ($physics)*4")
-	#graphics=$(bc <<< "scale=4; ($graphics)*4")
-	#computer=$(bc <<< "scale=4; ($computer)*3")
-	#sustainable=$(bc <<< "scale=4; ($sustainable)*3")
-	#electrical=$(bc <<< "scale=4; ($electrical)*3")
-	#physics_lab=$(bc <<< "scale=4; ($physics_lab*1")
-	#electrical_lab=$(bc <<< "scale=4; ($electrical_lab)*4")
-	#computer_lab=$(bc <<< "scale=4; ($computer_lab)*4")
-
-	#echo $($maths+$physics+$graphics+$computer+$sustainable+$electrical+$physics_lab+$electrical_lab+$computer_lab)
-	#bc <<< "scale=4; ($maths+$physics+$graphics+$computer+$sustainable+$electrical+$physics_lab+$electrical_lab+$computer_lab)"
-	var1=$(bc <<< "scale=4; ($name20)/24")
-	#name10=$(($name10/24))
-	#echo "Name read from file - $name10"
-	echo ${var1} ${mark}>> result2.txt
+	name20=$(bc <<< "scale=2; ($name20)/24")
+	echo ${name20} ${mark}>> temps2.txt
 done < "temp12.txt"
-
-paste result1.txt result2.txt > final1.txt
-
-grep MDL16CS final1.txt > temp.txt
-grep MDL16CS temp.txt > final1.txt
-
-echo Final Results > final2.txt
+paste temps1.txt temps2.txt > tempc1.txt
+grep MDL16CS tempc1.txt > temp.txt
+grep MDL16CS temp.txt > tempc1.txt
+echo Final Results > tempc2.txt
 while read -r line
 do
     name="$line"
@@ -188,36 +162,23 @@ do
 	roll=${arr[0]}
 	s1=${arr[2]} #4
 	s2=${arr[4]} #4
-	#echo ${s1}
-	#echo ${s2}
-
-	#echo $($maths+$physics+$graphics+$computer+$sustainable+$electrical+$physics_lab+$electrical_lab+$computer_lab)
-	s12=$(($s1*1 + $s2*1 ))
-	#echo ${s12}
-	#cgpa=${bc <<< "scale=4; }
-	cgpa=$(bc <<< "scale=4; ($s12)/47")
-	#name10=$(($name10/24))
-	#echo "Name read from file - $name10"
-	echo ${arr[0]} ${arr[1]} ${arr[3]} ${cgpa} >> final2.txt
-done < "final1.txt"	
-
-
+	#s12=$(($s1*1 + $s2*1 ))
+	s12=$(bc <<< "scale=2; ($s1)+($s2)")
+	cgpa=$(bc <<< "scale=2; ($s12)/47")
+	echo ${arr[0]} '|' ${arr[1]} '|' ${arr[3]}  '|' ${cgpa} >> tempc2.txt
+done < "tempc1.txt"	
 echo 'test' >cs4b1.txt
 while read -r line
 do
     name="$line"
 	arr=($name)
 	roll=${arr[0]}
-	s1=${arr[2]} #4
-	s2=${arr[4]} #4
-	echo  ${arr[5]} ${arr[6]} ${arr[7]}>> cs4b1.txt
+	s1=${arr[2]}
+	s2=${arr[4]}
+	echo  ${arr[5]} '|' ${arr[6]} ${arr[7]} ${arr[8]} ${arr[9]} ${arr[10]}>> cs4b1.txt
 done < "c4b.txt"	
-
 grep MDL16CS cs4b1.txt > cs4b2.txt
-
-
-join <(sort cs4b2.txt) <(sort final2.txt) > final_result.txt 
-
+join <(sort tempc2.txt) <(sort cs4b2.txt)> final_result.txt 
 rm temp*
-
-
+clear
+cat final_result.txt
