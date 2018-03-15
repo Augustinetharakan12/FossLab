@@ -182,3 +182,5 @@ join <(sort tempc2.txt) <(sort cs4b2.txt)> final_result.txt
 rm temp*
 clear
 cat final_result.txt
+rm cs4b1.txt
+rm cs4b2.txt
