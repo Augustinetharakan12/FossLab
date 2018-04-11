@@ -35,7 +35,7 @@ Datatypes
 Creating variables
 
 	$age = 25;             # An integer assignment
-	$name = "John Paul";   # A string 
+	$name = "John Paul";   # A string  
 	$salary = 1445.50;     # A floating point
 
 	Arrays
@@ -43,11 +43,8 @@ Creating variables
 	@ages = (25, 30, 40);             
 	@names = ("John Paul", "Lisa", "Kumar");
 
-	print "\$ages[0] = $ages[0]\n";
 
-	O/P
-
-		$ages[0] = 25
+	value of $ages[0] = 25
 
 Key value pairs
 
