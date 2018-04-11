@@ -1,5 +1,11 @@
 # Foss Lab
 
+> ### Name: Augustine Tharakan
+> ### Class: CS4b
+> ### Roll NO: 22
+
+# Tasks
+
 - [x] 1. Getting started with Linux basic commands for directory operations, displaying directory structure in tree format etc.
 - [x] 2. Linux commands for operations such as redirections, pipes, filterd, job control, changing ownershipt/permissions of files/links/directory
 - [x] 3. Advanced linux commands curl, wget, ftp, ssh and grep
