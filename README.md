@@ -44,3 +44,16 @@
 - [x] 12. Running PHP: Simple applications lke login forms after setting up a LAMP stack.
 - [x] 13. Virtualisation environment to test applications, new kernels nd isolate applications. It could also be used to expose students to other alternate OS such as freeBSD
 - [x] 14. Compiling from source: Learn about the various build systems used like the auto family, cmake, ant etc. Instead of just running the commands. This could involve the full process like fetching from a cvs and also include autoconf, automake etc.
+
+- [x] 15. Set up the complete network interface by configuring services such as gateay, DNS, IP tables etc. using ifconfig
+
+# Assignments
+
+- [x] 1. CGPA calculator
+- [x] 2. Networking tasks
+	- Set up n/w with ifconfig, route, /etc/resolv.co
+- [x] 3. Further tasks
+	1. Package management
+	2. perl
+	3. LAMP stack
+	4. Kernel compilation
