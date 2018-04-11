@@ -11,4 +11,4 @@
 	-Your current path setting
 	-Your current workign directory
 	-Number of users currently logged in 
-- [ ]
+- [ ] Testing
