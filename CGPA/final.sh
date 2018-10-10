@@ -35,8 +35,8 @@ sed 's/(B+)/8/g' temp10.txt > temp9.txt
 sed 's/(B)/7/g' temp9.txt > temp10.txt
 sed 's/(C)/6/g' temp10.txt > temp9.txt
 sed 's/(P)/5/g' temp9.txt > temp10.txt
-sed 's/(F)/0/g' temp10.txt > temp9.txt
-sed 's/(F)/0/g' temp9.txt > temp10.txt
+sed 's/(F)/10/g' temp10.txt > temp9.txt
+sed 's/(F)/10/g' temp9.txt > temp10.txt
 
 #to remove all the non ascii characters
 tr -cd '\11\12\15\40-\176' < temp10.txt > temp11.txt
