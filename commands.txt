@@ -697,4 +697,3 @@
   697  cat history > hist.txt
   698  cp history > hist.txt
   699  cp history hist.txt
-  700  history
