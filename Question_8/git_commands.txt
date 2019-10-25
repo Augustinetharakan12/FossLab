@@ -7,3 +7,9 @@ git commit -m "comments"
 git pull
 git stash
 git status
+git clone "whatever the repo link is"
+
+for usage of git through a proxy
+
+git config --global http.proxy http://user_name:password@proxy_ip:port
+git config --global --unset http.proxy
